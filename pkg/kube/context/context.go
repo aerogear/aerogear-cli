@@ -114,5 +114,11 @@ func (vc *CtxOptions) Validate() error {
 }
 
 func (vc *CtxOptions) GetNamespace() string {
-	return vc.userSpecifiedNamespace
+	ns := vc.userSpecifiedNamespace
+
+	if ns == "" {
+		ns = "default"
+	}
+
+	return ns
 }

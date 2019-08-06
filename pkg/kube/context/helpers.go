@@ -2,7 +2,11 @@ package context
 
 import (
 	"fmt"
+	"k8s.io/client-go/rest"
+	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/client-go/tools/clientcmd/api"
+	"os/user"
+	"path/filepath"
 	"strings"
 )
 
@@ -38,4 +42,12 @@ func GenerateContextName(fromContext *api.Context) string {
 	}
 
 	return name
+}
+
+func GetUser() (*user.User, error) {
+	return user.Current()
+}
+
+func GetRestConfig(usr *user.User) (*rest.Config, error) {
+	return clientcmd.BuildConfigFromFlags("", filepath.Join(usr.HomeDir, ".kube", "config"))
 }

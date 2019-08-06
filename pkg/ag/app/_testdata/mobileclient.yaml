@@ -1,0 +1,11 @@
+apiVersion: mdc.aerogear.org/v1alpha1
+kind: MobileClient
+metadata:
+  name: myapp
+  namespace: default
+spec:
+  name: myapp
+  apiKey: "ce485ad0-6b75-44aa-86a4-8e74355a5b4c"
+  dmzUrl: "lalla"
+status:
+  services: null
